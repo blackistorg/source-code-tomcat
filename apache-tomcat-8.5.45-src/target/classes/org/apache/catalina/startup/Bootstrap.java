@@ -269,6 +269,7 @@ public final class Bootstrap {
 		// Load our startup class and call its process() method
 		if (log.isDebugEnabled())
 			log.debug("Loading startup class");
+		// 反射加载
 		Class<?> startupClass = catalinaLoader.loadClass("org.apache.catalina.startup.Catalina");
 		Object startupInstance = startupClass.getConstructor().newInstance();
 
@@ -485,6 +486,7 @@ public final class Bootstrap {
 			Thread.currentThread().setContextClassLoader(daemon.catalinaLoader);
 		}
 
+		// 解析命令
 		try {
 			String command = "start";
 			if (args.length > 0) {

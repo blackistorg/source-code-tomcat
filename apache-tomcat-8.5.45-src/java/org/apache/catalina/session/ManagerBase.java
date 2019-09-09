@@ -653,6 +653,7 @@ public abstract class ManagerBase extends LifecycleMBeanBase implements Manager 
         if (id == null) {
             id = generateSessionId();
         }
+        // 设置sessionId并将session加入到Manager的sessions容器中保存
         session.setId(id);
         sessionCounter++;
 

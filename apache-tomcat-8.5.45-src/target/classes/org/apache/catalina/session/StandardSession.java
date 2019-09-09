@@ -354,6 +354,7 @@ public class StandardSession implements HttpSession, Session, Serializable {
         this.id = id;
 
         if (manager != null)
+            // 将session加入到sessions容器
             manager.add(this);
 
         if (notify) {

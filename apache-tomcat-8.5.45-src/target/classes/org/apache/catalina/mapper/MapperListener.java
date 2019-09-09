@@ -259,6 +259,11 @@ public class MapperListener extends LifecycleMBeanBase
 
     // ------------------------------------------------------ Protected Methods
 
+    /**
+     * 将 MapperListener 类作为一个监听者加到整个 Container 容器中的每个子容器中，
+     * 这样只要任何一个容器发生变化，MapperListener 都将会被通知，
+     * 相应的保存容器关系的 MapperListener 的 mapper 属性也会修改
+     */
     private void findDefaultHost() {
 
         Engine engine = service.getContainer();
@@ -269,6 +274,7 @@ public class MapperListener extends LifecycleMBeanBase
         if (defaultHost != null && defaultHost.length() >0) {
             Container[] containers = engine.findChildren();
 
+            // 将 host 及下面的子容器注册到 mapper 中
             for (Container container : containers) {
                 Host host = (Host) container;
                 if (defaultHost.equalsIgnoreCase(host.getName())) {

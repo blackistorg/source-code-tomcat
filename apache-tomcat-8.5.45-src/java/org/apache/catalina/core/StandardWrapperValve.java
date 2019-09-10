@@ -83,6 +83,8 @@ final class StandardWrapperValve
      * Invoke the servlet we are managing, respecting the rules regarding
      * servlet lifecycle and SingleThreadModel support.
      *
+     * 调用基于责任链模式的 pipeline
+     *
      * @param request Request to be processed
      * @param response Response to be produced
      *

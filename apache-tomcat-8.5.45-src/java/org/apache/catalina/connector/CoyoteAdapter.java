@@ -227,6 +227,7 @@ public class CoyoteAdapter implements Adapter {
             // if the application doesn't define one)?
             if (!request.isAsyncDispatching() && request.isAsync() &&
                     response.isErrorReportRequired()) {
+                //
                 connector.getService().getContainer().getPipeline().getFirst().invoke(
                         request, response);
             }

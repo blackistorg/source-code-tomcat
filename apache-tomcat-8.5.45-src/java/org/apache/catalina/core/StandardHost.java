@@ -66,6 +66,7 @@ public class StandardHost extends ContainerBase implements Host {
     public StandardHost() {
 
         super();
+        // 使得此 Container 的 Valve 一定会被调用, 从而使得 request 和 response 传递到子容器
         pipeline.setBasic(new StandardHostValve());
 
     }

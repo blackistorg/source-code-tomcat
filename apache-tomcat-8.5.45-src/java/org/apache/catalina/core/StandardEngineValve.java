@@ -60,6 +60,8 @@ final class StandardEngineValve extends ValveBase {
      * based on the requested server name.  If no matching Host can
      * be found, return an appropriate HTTP error.
      *
+     * 责任链模式的 Pipeline 调用
+     *
      * @param request Request to be processed
      * @param response Response to be produced
      *
@@ -84,6 +86,8 @@ final class StandardEngineValve extends ValveBase {
         }
 
         // Ask this Host to process this request
+        // 让子容器开始责任链传递
+        // 而此 Valve(StantdardEngineValue) 一定会被调用
         host.getPipeline().getFirst().invoke(request, response);
 
     }
